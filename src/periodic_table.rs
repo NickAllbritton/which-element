@@ -44,7 +44,15 @@ impl PeriodicTable {
             let atomic_number: u8 = rng.random_range(0..=92);
             let element = self.element_by_atomic_number(atomic_number);
             if self.natural_element(element.clone()) {
-                questions.push((element.symbol, element.name));
+                let mut pick_another = false;
+                for question_element in questions.clone() {
+                    if question_element.0 == element.symbol {
+                        pick_another = true;
+                    }
+                }
+                if !pick_another {
+                    questions.push((element.symbol, element.name));
+                }
             }
         }
 
