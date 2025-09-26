@@ -48,8 +48,9 @@ impl PeriodicTable {
             }
         }
 
-        for element in questions {
-            println!("What is the name of element: {}", element.0);
+        println!("|||||||||||Begin quiz|||||||||||||");
+        for element in questions.clone() {
+            println!("-What is the name of element: {}", element.0);
             let mut input = String::new();
             io::stdin().read_line(&mut input).expect("Failed to read line.");
             let name = input.trim();
@@ -57,6 +58,15 @@ impl PeriodicTable {
                 score = score + 1;
             }
         }
+        println!("||||||||||||||||||||||||||||||||||");
+        println!("");
+        println!("");
+        println!("-----------------------");
+        println!("Correct answers:");
+        for element in questions {
+            println!("{} -- {}", element.0, element.1);
+        }
+        println!("-----------------------");
 
         score
     }
