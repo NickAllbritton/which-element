@@ -92,6 +92,14 @@ impl PeriodicTable {
         (self.elements[0]).clone()
     }
 
+    pub fn atomic_mass(&self, element: Element) -> String {
+        element.mass
+    }
+
+    pub fn group(&self, element: Element) -> String {
+        element.group
+    }
+
     pub fn total_elements(self) -> usize {
         self.elements.len()
     }
