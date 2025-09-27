@@ -56,17 +56,19 @@ impl PeriodicTable {
             }
         }
 
-        println!("|||||||||||Begin quiz|||||||||||||");
+        println!("|||||||||||||||||Begin quiz ({} questions)||||||||||||||||", num_questions);
+        let mut iquestion: u8 = 1;
         for element in questions.clone() {
-            println!("-What is the name of element: {}", element.0);
+            println!("{}. What is the name of element: {}", iquestion, element.0);
             let mut input = String::new();
             io::stdin().read_line(&mut input).expect("Failed to read line.");
             let name = input.trim();
             if name == element.1 {
                 score = score + 1;
             }
+            iquestion = iquestion + 1;
         }
-        println!("||||||||||||||||||||||||||||||||||");
+        println!("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
         println!("");
         println!("");
         println!("-----------------------");

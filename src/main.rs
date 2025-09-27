@@ -11,8 +11,16 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() > 0 {
         if args[1] == "quiz".to_string() {
-            let score = periodic_table.quiz(5u8);
-            println!("Quiz results: {} / {} ", score, 5u8);
+            let nquestions: u8;
+            if args.len() > 2 {
+                nquestions = args[2].parse().expect("The number of questions given is not a valid number");
+            }
+            else
+            {
+                nquestions = 5u8;
+            }
+            let score = periodic_table.quiz(nquestions);
+            println!("Quiz results: {} / {} ", score, nquestions);
         }
     }
     else {
