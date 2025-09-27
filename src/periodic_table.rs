@@ -13,7 +13,7 @@ impl PeriodicTable {
         let content = fs::read_to_string(file_path).unwrap();
         let mut elements: Vec<Element> = Vec::new();
 
-        let mut index: usize = 0;
+        let mut index: usize; // index of the columns in the periodic table file
         for line in content.lines() {
             let mut element_info: [String; 6] = [String::new(), String::new(), 
                                             String::new(), String::new(), 
@@ -27,7 +27,7 @@ impl PeriodicTable {
             elements.push(Element::new(element_info[0].clone(), element_info[1].clone(),
                                         element_info[2].clone(), element_info[3].clone(),
                                         element_info[4].clone(),
-                                        (element_info[5]=="natural".to_string())));
+                                        element_info[5]=="natural".to_string()));
         }
 
         Self {
